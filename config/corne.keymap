@@ -5,7 +5,6 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
@@ -53,7 +52,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "MOUSE_TOG";
             #binding-cells = <0>;
-            bindings = <&kp SQT>, <&tog 2>;
+            bindings = <&kp SQT>, <&none>, <&tog 2>;
         };
 
         caps_num: caps_num {
@@ -77,6 +76,13 @@
             label = "KP_MENU";
             #binding-cells = <0>;
             bindings = <&mt LGUI C_MENU>, <&kp K_MENU>;
+        };
+
+        caps_tapDance: caps_tapDance {
+            compatible = "zmk,behavior-tap-dance";
+            label = "CAPS_TAPDANCE";
+            #binding-cells = <0>;
+            bindings = <&caps_word>, <&kp CAPSLOCK>, <&to 3>;
         };
 
         mmv {
@@ -103,6 +109,7 @@
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
         tap-ms = <100>;
         label = "SCROLL_ENCODER";
     };
@@ -152,7 +159,7 @@
 &esc_tilde               &kp Q  &kp W           &kp E        &kp R             &t_f4          &kp UP_ARROW     &kp Y        &kp U              &kp I            &kp O              &kp P     &slash_equal
 &kp TAB                  &kp A  &kp S           &kp D        &kp F             &kp G          &kp DOWN_ARROW   &kp H        &kp J              &kp K            &kp L              &kp SEMI  &mouse_tog
 &mt LEFT_GUI UNDERSCORE  &kp Z  &mt LEFT_ALT X  &mt LCTRL C  &mt LEFT_SHIFT V  &kp B          &kp LEFT_ARROW   &kp N        &mt RIGHT_SHIFT M  &mt RCTRL COMMA  &mt RIGHT_ALT DOT  &kp FSLH  &kp MINUS
-                                &mkp RCLK       &kp_menu     &caps_tog         &lt 3 SPACE    &kp RIGHT_ARROW  &lt 3 ENTER  &kp BACKSPACE      &lt 4 DEL
+                                &mkp RCLK       &kp_menu     &caps_tapDance    &lt 3 SPACE    &kp RIGHT_ARROW  &lt 3 ENTER  &kp BACKSPACE      &lt 4 DEL
                                                                                               &kp ENTER
             >;
 
@@ -202,17 +209,17 @@
             sensor-bindings = <&scroll_encoder>;
         };
 
-        FN {
+        FN-Num {
             display-name = "Fn";
             bindings = <
 &to 0          &kp F1  &kp F2           &kp F3       &kp F4              &kp F5     &kp UP          &kp LEFT_PARENTHESIS   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp SLASH     &kp EQUAL
 &kp PAGE_UP    &kp F6  &kp F7           &kp F8       &kp F9              &kp F10    &kp DOWN        &kp RIGHT_PARENTHESIS  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &kp PLUS
 &kp PAGE_DOWN  &trans  &trans           &bootloader  &mt LEFT_SHIFT F11  &kp F12    &kp LEFT        &kp KP_NUMBER_0        &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp MINUS
-                       &rgb_ug RGB_TOG  &trans       &trans              &trans     &kp RIGHT       &kp KP_ENTER           &kp BACKSPACE    &kp DEL
+                       &rgb_ug RGB_TOG  &trans       &to 0               &trans     &kp RIGHT       &kp KP_ENTER           &kp BACKSPACE    &kp DEL
                                                                                     &kp KP_NUMLOCK
             >;
 
-            label = "FN";
+            label = "FN-NUM";
             sensor-bindings = <&rgb_encoder>;
         };
 
