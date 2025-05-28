@@ -42,10 +42,10 @@ layers:
   - {t: '-', s: _}
   - $$mdi:mouse-right-click-outline$$
   - '&kp_menu'
-  - '&caps_tog'
-  - {t: '$$mdi:keyboard-space$$', h: FN}
+  - '&caps_tapDance'
+  - {t: '$$mdi:keyboard-space$$', h: FN-NUM}
   - $$mdi:arrow-right-bold$$
-  - {t: '$$mdi:keyboard-return$$', h: FN}
+  - {t: '$$mdi:keyboard-return$$', h: FN-NUM}
   - {t: '$$mdi:backspace$$', type: backspace}
   - {t: '$$mdi:backspace-reverse-outline$$', h: BT}
   - {t: '$$mdi:keyboard-return$$', type: enter}
@@ -147,7 +147,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - '&mkp MB2'
-  FN:
+  FN-NUM:
   - {t: QWERTY, h: toggle}
   - F1
   - F2
@@ -189,7 +189,7 @@ layers:
   - {t: '-', s: _}
   - RGB TOG
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: QWERTY, h: toggle}
   - {type: held}
   - $$mdi:arrow-right-bold$$
   - {t: KP ENTER, type: held alternate}
